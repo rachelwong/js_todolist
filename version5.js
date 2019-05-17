@@ -3,7 +3,7 @@ var todoList = {
 	todos: [],
 	displayTodos: function() {
 		// === is the strictest and consistent way to compare values
-		if (todoList.todos == 0) {
+		if (todoList.todos === 0) {
 			console.log("There is nothing in your list right now. Add something")
 		} else {
 			console.log(`My To-dos:`)
@@ -60,30 +60,5 @@ var todoList = {
 			}
 		}
 		this.displayTodos()
-	}
-}
-
-todoList.addTodo("First")
-todoList.addTodo("Second")
-
-// access the displayTodosButton
-// var displayTodosButton = document.getElementById("displayTodosButton")
-// // run the displayTodos method when pressed
-// displayTodosButton.addEventListener("click")
-
-// // access the toggleAll button
-// var toggleAllButton = document.getElementById("toggleAllButton")
-
-// // run the toggleAll method when pressed
-// toggleAllButton.addEventListener("click")
-
-// want methods in this object to handle different events
-var handlers = {
-	// all methods that handle different events goes here
-	displayTodos: function() {
-		todoList.displayTodos()
-	},
-	toggleAll: function() {
-		todoList.toggleAll()
 	}
 }
