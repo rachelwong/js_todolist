@@ -21,6 +21,7 @@ var todoList = {
 			todoText: todoText,
 			completed: false // false by default as incomplete
 		})
+		this.displayTodos()
 	},
 	changeTodo: function(position, todoText) {
 		// this.todos[position] is an object
@@ -63,9 +64,6 @@ var todoList = {
 	}
 }
 
-todoList.addTodo("First")
-todoList.addTodo("Second")
-
 // access the displayTodosButton
 // var displayTodosButton = document.getElementById("displayTodosButton")
 // // run the displayTodos method when pressed
@@ -85,5 +83,38 @@ var handlers = {
 	},
 	toggleAll: function() {
 		todoList.toggleAll()
+	},
+	addTodo: function() {
+		//grab user text input from the text box
+		var addTodoTextInput = document.getElementById("addTodoTextInput")
+		// debugging - console.log("addTodo firing")
+		// feed the input into the addToDo method
+		// .value is essential (turns into a string)
+		todoList.addTodo(addTodoTextInput.value)
+
+		addTodoTextInput.value = ""
+	},
+	changeTodo: function() {
+		// create variables of the two input fields (index and also the content to change)
+		var changeTodoPositionInput = document.getElementById("changeTodoPositionInput")
+		var changeTodoTextInput = document.getElementById("changeTodoTextInput")
+
+		// change the to do of a specific index position provided
+		todoList.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value)
+
+		//clear the fields
+		changeTodoPositionInput.value = ""
+		changeTodoTextInput.value = ""
+	},
+
+	//**** DELETE TODO ITEM IS NOT WORKING  ******/
+	deleteTodo: function() {
+		// create variable of the delete position
+		var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput")
+
+		// runs the deleteTodo method passing through the position index of the item
+		todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber)
+		// clear the delete index field once submitted
+		deleteTodoPositionInput = ""
 	}
 }

@@ -8,9 +8,27 @@
 	</head>
 	<body>
 		<h1>To Do List</h1>
-		<button onclick="handlers.displayTodos()">Display To-dos</button>
-		<button onclick="handlers.toggleAll()">Toggle All</button>
 
+		<input type="text" id="addTodoTextInput" />
+		<div>
+			<button onclick="handlers.addTodo()">Add Todos</button>
+		</div>
+		<br />
+		<div>
+			<button onclick="handlers.displayTodos()">Display To-dos</button>
+			<button onclick="handlers.toggleAll()">Toggle All</button>
+		</div>
+		<br />
+		<div>
+			<button onclick="handlers.changeTodo()">Change Todo</button>
+			<input id="changeTodoPositionInput" type="number" />
+			<input id="changeTodoTextInput" type="text" />
+		</div>
+		<br />
+		<div>
+			<button onclick="handlers.deleteTodo()">Delete Item</button>
+			<input id="deleteTodoPositionInput" type="number" />
+		</div>
 		<script src="script.js"></script>
 	</body>
 </html>
