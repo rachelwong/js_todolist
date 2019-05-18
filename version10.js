@@ -40,25 +40,64 @@ var todoList = {
 	toggleAll: function() {
 		let totalTodos = this.todos.length
 		let completedTodos = 0
-		// get number of completedTodos
-		for (let i = 0; i < totalTodos; i++) {
-			if (this.todos[i].completed === true) {
+
+		// GET NUMBER OF COMPLETED TODOS
+
+		// VERSION 1
+		// for (let i = 0; i < totalTodos; i++) {
+		// 	if (this.todos[i].completed === true) {
+		// 		completedTodos++
+		// 	}
+		// }
+
+		// VERSION 2
+		// forEach(elemnt of array)
+		this.todos.forEach(function(todo) {
+			if (todo.completed === true) {
 				completedTodos++
 			}
-		}
-		// case 1 if everything is true, everything is false
-		if (completedTodos === totalTodos) {
-			//set the completed status of every item in the array in teh todos into false
-			for (let i = 0; i < totalTodos; i++) {
-				this.todos[i].completed = false
+		})
+
+		// *** ORIGINAL VERSION *** with if else statement managin foreach
+		// CASE 1: IF EVERYTHING IS TRUE, THEN MAKE EVERYTHING FALSE
+		// if (completedTodos === totalTodos) {
+		// 	// VERSION 1
+		// 	//set the completed status of every item in the array in teh todos into false
+		// 	// for (let i = 0; i < totalTodos; i++) {
+		// 	// 	this.todos[i].completed = false
+		// 	// }
+
+		// 	// VERSION 2
+		// 	this.todos.forEach(function(todo) {
+		// 		todo.completed = false
+		// 	})
+		// }
+
+		// // CASE 2: OTHERWISE, IF EVERYTHING IS FALSE, THEN MAKE EVERYTHING TRUE
+		// else {
+		// 	// VERSION 1
+		// 	// for (let i = 0; i < totalTodos; i++) {
+		// 	// 	this.todos[i].completed = true
+		// 	// }
+
+		// 	// VERSION 2
+		// 	this.todos.forEach(function(todo) {
+		// 		todo.completed = true
+		// 	})
+		// }
+		// *** ORIGINAL VERSION ENDS ** //
+
+		// ** NEW VERSION  **//
+		this.todos.forEach(function(todo) {
+			// Case 1: if everything is true, make everything false
+			if (completedTodos === totalTodos) {
+				todo.completed = false
+				// Case 2: if everything is false, make everything true
+			} else {
+				todo.completed = true
 			}
-		}
-		// case 2: otherwise make everything true
-		else {
-			for (let i = 0; i < totalTodos; i++) {
-				this.todos[i].completed = true
-			}
-		}
+		})
+		// ** NEW VERISON ENDS **//
 		// this.displayTodos()
 	}
 }
@@ -145,26 +184,50 @@ var view = {
 		// clears the unordered list before adding li elements
 		todosUl.innerHTML = ""
 
+		// VERSION 1 //
 		// if todos have zero items, then nothing will be done
 		// if have five items, then do five things
-		for (var i = 0; i < todoList.todos.length; i++) {
+		// for (var i = 0; i < todoList.todos.length; i++) {
+		// 	var todoLi = document.createElement("li")
+		// 	var todoTextWithCompletion = "" // full todo text with completion
+		// 	var todo = todoList.todos[i] // each element in the todolist
+
+		// 	if (todo.completed === true) {
+		// 		todoTextWithCompletion = "(x)" + todo.todoText
+		// 	} else {
+		// 		todoTextWithCompletion = "( )" + todo.todoText
+		// 	}
+		// 	todoLi.id = i // for each item, create an id to identify it with
+		// 	todoLi.textContent = todoTextWithCompletion
+		// 	todoLi.appendChild(this.createDeleteButton())
+		// 	todosUl.appendChild(todoLi)
+		// }
+		// VERSION 2
+		// if todos have zero items, then nothing will be done
+		// if have five items, then do five things
+		// for every element of the array, an index can be passed in as second argument
+
+		// this = view object
+		// nested callback function is not referring to the view object
+		// forEach(callback_function, this)
+		todoList.todos.forEach(function(todo, position) {
 			var todoLi = document.createElement("li")
 			var todoTextWithCompletion = "" // full todo text with completion
-			var todo = todoList.todos[i] // each element in the todolist
 
 			if (todo.completed === true) {
 				todoTextWithCompletion = "(x)" + todo.todoText
 			} else {
 				todoTextWithCompletion = "( )" + todo.todoText
 			}
-			todoLi.id = i // for each item, create an id to identify it with
+
+			todoLi.id = position // for each item, create an id to identify it with
 			todoLi.textContent = todoTextWithCompletion
 			todoLi.appendChild(this.createDeleteButton())
 			todosUl.appendChild(todoLi)
+		}, this)
 
-			// the content of each li is each element in the todoList objects's todos array's todoText property
-			// todoLi.textContent = todoList.todos[i].todoText
-		}
+		// the content of each li is each element in the todoList objects's todos array's todoText property
+		// todoLi.textContent = todoList.todos[i].todoText
 	},
 	createDeleteButton: function() {
 		//create a delete button and return it

@@ -2,7 +2,9 @@
 
 Tutorial: https://watchandcode.com/
 
-## Functions inside functions (to enhance other functions)
+## Brain Dump
+
+#### Functions inside functions (to enhance other functions)
 
 ```
 function logTenNumbers(){
@@ -23,7 +25,7 @@ runWithDebugger(function logTenNumbers(){
 })
 ```
 
-## SetTimeout
+#### SetTimeout
 
 Run a function after a certain time period
 
@@ -31,7 +33,7 @@ Run a function after a certain time period
 setTimeout(function(){}, 5000) // runs function after 5 seconds
 ```
 
-## For Each
+#### For Each
 
 ```
 // **version 1**
@@ -77,7 +79,21 @@ forEach(students, function(student){
 })
 ```
 
-## Event Listening
+when dealing with an array, the callback function in the forEach() can pass in both a value in the array and the index of the array
+
+forEach() when nested inside a method of an object, it will need to pass in `this` in order to refer to other function of the object.
+
+.forEach(callbackFunction, this)
+
+```
+variable.array.forEach(callbackfunction(arrayItem, itemposition){
+  //do stuff here
+}, this)
+```
+
+Adding the `this` allows you to refer to other functions of variable from INSIDE the callbackFunction
+
+#### Event Listening
 
 ```
 variable.addEventListener('the event', run a function also known as a callback function)
@@ -88,6 +104,6 @@ variable.addEventListener('click', function(){
 })
 ```
 
-## Notes
+#### Other notes
 
 .textContent and .innerHTML are not the same
