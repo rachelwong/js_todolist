@@ -1,44 +1,44 @@
 var todoText
 var todoList = {
 	todos: [],
-	displayTodos: function () {
-		// === is the strictest and consistent way to compare values
-		if (todoList.todos == 0) {
-			console.log("There is nothing in your list right now. Add something")
-		} else {
-			console.log(`My To-dos:`)
-			for (var i = 0; i < this.todos.length; i++) {
-				if (this.todos[i].completed === true) {
-					console.log(`(x) ${this.todos[i].todoText}`)
-				} else {
-					console.log(`( ) ${this.todos[i].todoText}`)
-				}
-			}
-		}
-	},
-	addTodo: function (todoText) {
+	// displayTodos: function() {
+	// 	// === is the strictest and consistent way to compare values
+	// 	if (todoList.todos == 0) {
+	// 		console.log("There is nothing in your list right now. Add something")
+	// 	} else {
+	// 		console.log(`My To-dos:`)
+	// 		for (var i = 0; i < this.todos.length; i++) {
+	// 			if (this.todos[i].completed === true) {
+	// 				console.log(`(x) ${this.todos[i].todoText}`)
+	// 			} else {
+	// 				console.log(`( ) ${this.todos[i].todoText}`)
+	// 			}
+	// 		}
+	// 	}
+	// },
+	addTodo: function(todoText) {
 		this.todos.push({
 			todoText: todoText,
 			completed: false // false by default as incomplete
 		})
-		this.displayTodos()
+		// this.displayTodos()
 	},
-	changeTodo: function (position, todoText) {
+	changeTodo: function(position, todoText) {
 		// this.todos[position] is an object
 		this.todos[position].todoText = todoText
-		this.displayTodos()
+		// this.displayTodos()
 	},
-	deleteTodo: function (position) {
+	deleteTodo: function(position) {
 		this.todos.splice(position, 1)
-		this.displayTodos()
+		// this.displayTodos()
 	},
-	toggleCompleted: function (position) {
+	toggleCompleted: function(position) {
 		// this changes the status of the completed when it is toggled.
 		let todo = this.todos[position] // refers to ONE specific todo in the array of todos initialised above
 		todo.completed = !todo.completed
-		this.displayTodos()
+		// this.displayTodos()
 	},
-	toggleAll: function () {
+	toggleAll: function() {
 		let totalTodos = this.todos.length
 		let completedTodos = 0
 		// get number of completedTodos
@@ -60,7 +60,7 @@ var todoList = {
 				this.todos[i].completed = true
 			}
 		}
-		this.displayTodos()
+		// this.displayTodos()
 	}
 }
 
@@ -78,13 +78,13 @@ var todoList = {
 // want methods in this object to handle different events
 var handlers = {
 	// all methods that handle different events goes here
-	displayTodos: function () {
-		todoList.displayTodos()
-	},
-	toggleAll: function () {
+	// displayTodos: function () {
+	// 	todoList.displayTodos()
+	// },
+	toggleAll: function() {
 		todoList.toggleAll()
 	},
-	addTodo: function () {
+	addTodo: function() {
 		//grab user text input from the text box
 		var addTodoTextInput = document.getElementById("addTodoTextInput")
 		// debugging - console.log("addTodo firing")
@@ -94,7 +94,7 @@ var handlers = {
 
 		addTodoTextInput.value = ""
 	},
-	changeTodo: function () {
+	changeTodo: function() {
 		// create variables of the two input fields (index and also the content to change)
 		var changeTodoPositionInput = document.getElementById("changeTodoPositionInput")
 		var changeTodoTextInput = document.getElementById("changeTodoTextInput")
@@ -106,7 +106,7 @@ var handlers = {
 		changeTodoPositionInput.value = ""
 		changeTodoTextInput.value = ""
 	},
-	deleteTodo: function () {
+	deleteTodo: function() {
 		// create variable of the delete position
 		var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput")
 
@@ -115,7 +115,7 @@ var handlers = {
 		// clear the delete index field once submitted
 		deleteTodoPositionInput = ""
 	},
-	toggleCompleted: function () {
+	toggleCompleted: function() {
 		var toggleCompletedPositionInput = document.getElementById("toggleCompletedPositionInput")
 		todoList.toggleCompleted(toggleCompletedPositionInput.valueAsNumber)
 		toggleCompletedPositionInput = ""

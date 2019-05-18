@@ -9,13 +9,16 @@
 	<body>
 		<h1>To Do List</h1>
 
+		<!--display the list of todos-->
+		<ul></ul>
+
 		<input type="text" id="addTodoTextInput" />
 		<div>
 			<button onclick="handlers.addTodo()">Add Todos</button>
 		</div>
 		<br />
 		<div>
-			<button onclick="handlers.displayTodos()">Display To-dos</button>
+			<!-- REMOVED FOR VERSION 8 <button onclick="handlers.displayTodos()">Display To-dos</button> -->
 			<button onclick="handlers.toggleAll()">Toggle All</button>
 		</div>
 		<br />
@@ -34,9 +37,6 @@
 			<button onclick="handlers.toggleCompleted()">Toggle Completed</button>
 			<input id="toggleCompletedPositionInput" type="number" />
 		</div>
-
-		<!--display the list of todos-->
-		<ul></ul>
 
 		<script src="script.js"></script>
 	</body>
