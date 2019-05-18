@@ -1,4 +1,4 @@
-var todoText
+// var todoText
 var todoList = {
 	todos: [],
 	displayTodos: function() {
@@ -21,22 +21,22 @@ var todoList = {
 			todoText: todoText,
 			completed: false // false by default as incomplete
 		})
-		this.displayTodos()
+		// this.displayTodos()
 	},
 	changeTodo: function(position, todoText) {
 		// this.todos[position] is an object
 		this.todos[position].todoText = todoText
-		this.displayTodos()
+		// this.displayTodos()
 	},
 	deleteTodo: function(position) {
 		this.todos.splice(position, 1)
-		this.displayTodos()
+		// this.displayTodos()
 	},
 	toggleCompleted: function(position) {
 		// this changes the status of the completed when it is toggled.
 		let todo = this.todos[position] // refers to ONE specific todo in the array of todos initialised above
 		todo.completed = !todo.completed
-		this.displayTodos()
+		// this.displayTodos()
 	},
 	toggleAll: function() {
 		let totalTodos = this.todos.length
@@ -60,7 +60,7 @@ var todoList = {
 				this.todos[i].completed = true
 			}
 		}
-		this.displayTodos()
+		// this.displayTodos()
 	}
 }
 
