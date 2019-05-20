@@ -1,6 +1,6 @@
 # Basic Javascript To-do list application
 
-Tutorial: https://watchandcode.com/
+Additional Reference: https://watchandcode.com/
 
 ## Brain Dump
 
@@ -106,4 +106,6 @@ variable.addEventListener('click', function(){
 
 #### Other notes
 
-.textContent and .innerHTML are not the same
+.textContent and .innerHTML and .innerText are not the same
+
+
